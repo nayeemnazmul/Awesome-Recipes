@@ -8,15 +8,15 @@ export default class HomeScreen extends Component {
 
   constructor() {
     super();
-    this.state = {
-
-    };
+    this.state = {};
   }
 
   render() {
+    const { navigation } = this.props;
+
     return (
       <View>
-        <Text>Home Screen</Text>
+        <Text onPress={() => navigation.navigate("Details")}>Home Screen</Text>
       </View>
     );
   }
