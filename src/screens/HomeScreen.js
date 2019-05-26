@@ -23,7 +23,7 @@ export default class HomeScreen extends Component {
   //   this.state = {
   //     data: null,
   //     success: false,
-  //     loading: false
+  //     loading: true
   //   };
   // }
 
@@ -31,37 +31,30 @@ export default class HomeScreen extends Component {
   state = {
     data: null,
     success: false,
-    loading: false
+    loading: true
   };
 
-  componentWillMount() {
-    this.setState({
-      loading: true
-    });
-
+  fetchRecipe = () => {
     // this is a freely available public API from food2fork
-    // user your own API key to test
+    // use your own API key to test
+    // this has a limit of 50 requests/day
     fetch(
-      "https://www.food2fork.com/api/search?key=7cbb796ab2a4ef5cb1a72c5f5eb4e113"
+      "https://www.food2fork.com/api/search?key=1466bb51e37f8088374fda8c3d177325"
     )
-      .then(response => {
-        //console.log("Response ", response);
-
-        if (response.ok) {
-          this.setState({
-            success: true
-          });
-
-          return response.json();
-        }
-      })
+      .then(response => response.json())
       .then(responseJson => {
         console.log("Response ", responseJson);
-
-        this.setState({
-          data: responseJson,
-          loading: false
-        });
+        if (responseJson.error !== "limit") {
+          this.setState({
+            data: responseJson,
+            loading: false,
+            success: true
+          });
+        } else {
+          this.setState({
+            loading: false
+          });
+        }
       })
       .catch(error => {
         this.setState({
@@ -70,15 +63,16 @@ export default class HomeScreen extends Component {
 
         console.log("Error ", error);
       });
+  };
+
+  componentDidMount() {
+    this.fetchRecipe();
   }
 
   _renderItem = ({ item: recipe }) => {
     //console.log("RecipeItem ", recipe);
     return (
-      <TouchableOpacity
-      // style={}
-      // onPress={}
-      >
+      <TouchableOpacity>
         <RecipeItem recipe={recipe} />
       </TouchableOpacity>
     );
