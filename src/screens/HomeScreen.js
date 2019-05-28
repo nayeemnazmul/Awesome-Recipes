@@ -70,7 +70,7 @@ export default class HomeScreen extends Component {
 
   _renderItem = ({ item: recipe }) => {
     //console.log("RecipeItem ", recipe);
-    return <RecipeItem recipe={recipe} />;
+    return <RecipeItem recipe={recipe} navigation={this.props.navigation} />;
   };
 
   // solution for
