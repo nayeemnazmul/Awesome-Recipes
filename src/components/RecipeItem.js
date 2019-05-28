@@ -38,10 +38,10 @@ export default class RecipeItem extends Component {
 
 const styles = StyleSheet.create({
   recipeContainer: {
-    margin: 10,
+    margin: 5,
     borderWidth: 1,
     borderRadius: 8,
-    borderColor: "#bdbdbd",
+    borderColor: "#ddd",
     shadowColor: "#bdbdbd",
     shadowOffset: {
       width: 0,

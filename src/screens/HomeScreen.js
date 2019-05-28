@@ -5,7 +5,7 @@ import {
   ActivityIndicator,
   StyleSheet,
   FlatList,
-  Button,
+  Button
 } from "react-native";
 import RecipeItem from "../components/RecipeItem";
 import sampleRecipes from "./../sample-recipes";
@@ -70,9 +70,7 @@ export default class HomeScreen extends Component {
 
   _renderItem = ({ item: recipe }) => {
     //console.log("RecipeItem ", recipe);
-    return (
-      <RecipeItem recipe={recipe} />
-    );
+    return <RecipeItem recipe={recipe} />;
   };
 
   // solution for
@@ -141,8 +139,7 @@ const styles = StyleSheet.create({
   },
   recipeListContainer: {
     flex: 1,
-    alignItems: "center",
-    marginVertical: 25
-    //justifyContent: "center"
+    margin: 5,
+    justifyContent: "center"
   }
 });
