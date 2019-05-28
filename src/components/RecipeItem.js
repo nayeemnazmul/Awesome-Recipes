@@ -1,9 +1,14 @@
 import React, { Component } from "react";
-import { StyleSheet, TouchableOpacity, Image } from "react-native";
+import { Image, StyleSheet, TouchableOpacity } from "react-native";
+import Button from "./common/Button";
 import Card from "./common/Card";
 import RecipeHeader from "./common/RecipeHeader";
 
 export default class RecipeItem extends Component {
+  goToDetail = () => {
+    this.props.navigation.navigate("Details");
+  };
+
   render() {
     const {
       publisher,
@@ -16,8 +21,6 @@ export default class RecipeItem extends Component {
 
     const { navigation } = this.props;
 
-    // console.log(image_url);
-
     return (
       <TouchableOpacity onPress={() => navigation.navigate("Details")}>
         <Card>
@@ -26,11 +29,14 @@ export default class RecipeItem extends Component {
             style={styles.recipeImage}
             resizeMode="cover"
           />
+
           <RecipeHeader
             publisher={publisher}
             publisher_url={publisher_url}
             title={title}
           />
+
+          <Button goToDetail={this.goToDetail} title="View Details" />
         </Card>
       </TouchableOpacity>
     );
@@ -50,7 +56,7 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 1,
     shadowRadius: 4,
-    backgroundColor: "#e0f7fa"
+    backgroundColor: "#b3e5fc"
   },
   recipeImage: {
     height: 250,

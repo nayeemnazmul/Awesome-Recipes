@@ -103,7 +103,7 @@ export default class HomeScreen extends Component {
 
     if (!success) {
       return (
-        <View style={styles.loadingIndicator}>
+        <View style={styles.loadButton}>
           <Text>API call failed.</Text>
           <Button
             onPress={this.loadSampleRecipe}
