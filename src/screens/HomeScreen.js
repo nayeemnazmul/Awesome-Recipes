@@ -6,7 +6,6 @@ import {
   StyleSheet,
   FlatList,
   Button,
-  TouchableOpacity
 } from "react-native";
 import RecipeItem from "../components/RecipeItem";
 import sampleRecipes from "./../sample-recipes";
@@ -72,9 +71,7 @@ export default class HomeScreen extends Component {
   _renderItem = ({ item: recipe }) => {
     //console.log("RecipeItem ", recipe);
     return (
-      <TouchableOpacity>
-        <RecipeItem recipe={recipe} />
-      </TouchableOpacity>
+      <RecipeItem recipe={recipe} />
     );
   };
 

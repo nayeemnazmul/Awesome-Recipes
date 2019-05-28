@@ -20,16 +20,16 @@ const styles = StyleSheet.create({
     marginBottom: 15
   },
   title: {
-    fontSize: 20,
+    fontSize: 17,
     color: "#303030",
     fontWeight: "bold"
   },
   publisher: {
-    fontSize: 15,
+    fontSize: 14,
     //color: "#303030",
     color: "#E91E63",
     textDecorationLine: "underline",
-    paddingTop: 6
+    //paddingTop: 6
   }
 });
 
