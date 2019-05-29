@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { StyleSheet, View } from "react-native";
 
 export default class Card extends Component {
   render() {
@@ -9,7 +9,9 @@ export default class Card extends Component {
 
 const styles = StyleSheet.create({
   recipeContainer: {
-    margin: 5,
+    marginVertical: 10,
+    marginLeft: 5,
+    marginRight: 5,
     borderWidth: 1,
     borderRadius: 8,
     borderColor: "#ddd",
@@ -18,8 +20,9 @@ const styles = StyleSheet.create({
       width: 0,
       height: 4
     },
-    shadowOpacity: 1,
-    shadowRadius: 4,
+    shadowOpacity: 0.5,
+    shadowRadius: 0.5,
+    elevation: 5,
     backgroundColor: "#e0f7fa"
   }
 });

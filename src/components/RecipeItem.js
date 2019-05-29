@@ -6,7 +6,8 @@ import RecipeHeader from "./common/RecipeHeader";
 
 export default class RecipeItem extends Component {
   goToDetail = () => {
-    this.props.navigation.navigate("Details");
+    const { recipe } = this.props;
+    this.props.navigation.navigate("Details", { recipe });
   };
 
   render() {
@@ -22,7 +23,7 @@ export default class RecipeItem extends Component {
     const { navigation } = this.props;
 
     return (
-      <TouchableOpacity onPress={() => navigation.navigate("Details")}>
+      <TouchableOpacity onPress={this.goToDetail}>
         <Card>
           <Image
             source={{ uri: image_url }}
@@ -44,22 +45,8 @@ export default class RecipeItem extends Component {
 }
 
 const styles = StyleSheet.create({
-  recipeContainer: {
-    margin: 5,
-    borderWidth: 1,
-    borderRadius: 8,
-    borderColor: "#ddd",
-    shadowColor: "#bdbdbd",
-    shadowOffset: {
-      width: 0,
-      height: 4
-    },
-    shadowOpacity: 1,
-    shadowRadius: 4,
-    backgroundColor: "#b3e5fc"
-  },
   recipeImage: {
-    height: 250,
+    height: 150,
     flex: 1,
     borderRadius: 8,
     margin: 5
