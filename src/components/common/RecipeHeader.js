@@ -15,10 +15,10 @@ const RecipeHeader = props => (
 
 const styles = StyleSheet.create({
   recipeHeader: {
-    // marginTop: 10,
-    // marginLeft: 10,
-    // marginBottom: 15
-    padding: 15
+    marginTop: 10,
+    marginLeft: 10,
+    marginBottom: 15
+    //padding: 15
   },
   title: {
     fontSize: 17,

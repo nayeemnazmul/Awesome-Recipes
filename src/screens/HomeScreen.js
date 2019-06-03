@@ -5,7 +5,8 @@ import {
   ActivityIndicator,
   StyleSheet,
   FlatList,
-  Button
+  Button,
+  SafeAreaView
 } from "react-native";
 import RecipeItem from "../components/RecipeItem";
 import sampleRecipes from "./../sample-recipes";
@@ -115,13 +116,13 @@ export default class HomeScreen extends Component {
     }
 
     return (
-      <View style={styles.recipeListContainer}>
+      <SafeAreaView style={styles.recipeListContainer}>
         <FlatList
           data={data.recipes}
           renderItem={this._renderItem}
           keyExtractor={this._keyExtractor}
         />
-      </View>
+      </SafeAreaView>
     );
   }
 }
