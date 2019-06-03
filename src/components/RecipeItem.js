@@ -37,7 +37,7 @@ export default class RecipeItem extends Component {
             title={title}
           />
 
-          <Button goToDetail={this.goToDetail} title="View Details" />
+          <Button onPress={this.goToDetail} title="View Details" />
         </Card>
       </TouchableOpacity>
     );

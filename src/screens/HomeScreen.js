@@ -13,7 +13,7 @@ import sampleRecipes from "./../sample-recipes";
 
 export default class HomeScreen extends Component {
   static navigationOptions = {
-    title: "Home"
+    title: "Recipe List"
   };
 
   // default way of declaring state
