@@ -1,10 +1,10 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { Image, StyleSheet, TouchableOpacity } from "react-native";
 import Button from "./common/Button";
 import Card from "./common/Card";
 import RecipeHeader from "./common/RecipeHeader";
 
-export default class RecipeItem extends Component {
+export default class RecipeItem extends PureComponent {
   goToDetail = () => {
     const { recipe } = this.props;
     this.props.navigation.navigate("Details", { recipe });
