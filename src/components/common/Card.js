@@ -10,8 +10,8 @@ export default class Card extends Component {
 const styles = StyleSheet.create({
   recipeContainer: {
     marginVertical: 10,
-    marginLeft: 5,
-    marginRight: 5,
+    marginLeft: 10,
+    marginRight: 10,
     borderWidth: 1,
     borderRadius: 8,
     borderColor: "#ddd",

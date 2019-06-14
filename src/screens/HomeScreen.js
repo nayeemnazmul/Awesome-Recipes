@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import RecipeItem from "../components/RecipeItem";
 import sampleRecipes from "./../sample-recipes";
+import { SearchBar } from "react-native-elements";
 
 export default class HomeScreen extends Component {
   static navigationOptions = {
@@ -18,21 +19,28 @@ export default class HomeScreen extends Component {
 
   // default way of declaring state
 
-  // constructor() {
-  //   super();
-  //   this.state = {
-  //     data: null,
-  //     success: false,
-  //     loading: true
-  //   };
-  // }
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      data: null,
+      success: false,
+      loading: true,
+      searchText: ""
+    };
+
+    this.arrayHolder = [];
+  }
 
   // alternative way of declaring state
-  state = {
-    data: null,
-    success: false,
-    loading: true
-  };
+  // state = {
+  //   data: null,
+  //   success: false,
+  //   loading: true,
+  //   searchText: ""
+  // };
+
+  //arrayHolder = [];
 
   fetchRecipe = () => {
     // this is a freely available public API from food2fork
@@ -41,19 +49,32 @@ export default class HomeScreen extends Component {
     fetch(
       "https://www.food2fork.com/api/search?key=1466bb51e37f8088374fda8c3d177325"
     )
-      .then(response => response.json())
+      .then(response => {
+        console.log("main response ", response);
+
+        if (response.ok) {
+          return response.json();
+        }
+      })
       .then(responseJson => {
         console.log("Response ", responseJson);
         if (responseJson.error !== "limit") {
           this.setState({
-            data: responseJson,
-            loading: false,
-            success: true
-          });
-        } else {
-          this.setState({
+            data: responseJson.recipes,
+            success: true,
             loading: false
           });
+
+          this.arrayHolder = responseJson.recipes;
+        } else {
+          // if API call fails somehow then, load sample recipes
+          this.setState({
+            data: sampleRecipes.recipes,
+            success: true,
+            loading: false
+          });
+
+          this.arrayHolder = sampleRecipes.recipes;
         }
       })
       .catch(error => {
@@ -79,14 +100,48 @@ export default class HomeScreen extends Component {
   // make sure to specify a key property on each item or provide a custom keyExtractor.
   _keyExtractor = item => item.recipe_id;
 
+  _searchFilterFunction = text => {
+    this.setState({
+      searchText: text
+    });
+
+    const newData = this.arrayHolder.filter(recipe => {
+      const title = recipe.title.toUpperCase();
+      const searchText = text.toUpperCase();
+
+      return title.indexOf(searchText) > -1;
+    });
+
+    this.setState({ data: newData });
+  };
+
+  _renderHeader = () => {
+    return (
+      <SearchBar
+        placeholder="Search by title..."
+        lightTheme={true}
+        round
+        onChangeText={text => this._searchFilterFunction(text)}
+        autoCorrect={false}
+        value={this.state.searchText}
+      />
+    );
+  };
+
   // if fetch call fails
   // load sample recipe from already loaded data
-  loadSampleRecipe = () => {
-    this.setState({
-      data: sampleRecipes,
-      success: true
-    });
-  };
+
+  // loadSampleRecipe = () => {
+  //   this.setState({
+  //     data: sampleRecipes.recipes,
+  //     success: true
+  //   });
+
+  //   // not working
+
+  //   // const { data } = this.state;
+  //   // this.arrayHolder = data;
+  // };
 
   render() {
     const { navigation } = this.props;
@@ -102,25 +157,26 @@ export default class HomeScreen extends Component {
       );
     }
 
-    if (!success) {
-      return (
-        <View style={styles.loadButton}>
-          <Text>API call failed.</Text>
-          <Button
-            onPress={this.loadSampleRecipe}
-            title="Load Sample Recipe"
-            color="#841584"
-          />
-        </View>
-      );
-    }
+    // if (!success) {
+    //   return (
+    //     <View style={styles.loadButton}>
+    //       <Text>API call failed.</Text>
+    //       <Button
+    //         onPress={this.loadSampleRecipe}
+    //         title="Load Sample Recipe"
+    //         color="#841584"
+    //       />
+    //     </View>
+    //   );
+    // }
 
     return (
       <SafeAreaView style={styles.recipeListContainer}>
         <FlatList
-          data={data.recipes}
+          data={data}
           renderItem={this._renderItem}
           keyExtractor={this._keyExtractor}
+          ListHeaderComponent={this._renderHeader}
         />
       </SafeAreaView>
     );
@@ -140,7 +196,6 @@ const styles = StyleSheet.create({
   },
   recipeListContainer: {
     flex: 1,
-    margin: 5,
     justifyContent: "center"
   }
 });

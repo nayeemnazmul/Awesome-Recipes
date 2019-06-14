@@ -41,7 +41,7 @@ export default class DetailsScreen extends Component {
   //     });
   // };
 
-  // componentWillMount() {
+  // componentDidMount() {
   //   this.fetchIngredients();
   // }
 
@@ -52,7 +52,9 @@ export default class DetailsScreen extends Component {
 
   render() {
     const recipe = this.props.navigation.getParam("recipe", "");
-    // const { details } = this.state;
+    const { details } = this.state;
+    console.log("kjh ", details);
+
     return (
       <Card>
         <Image
@@ -72,7 +74,11 @@ export default class DetailsScreen extends Component {
             Social Rank - {recipe.social_rank}
           </Text>
           {/* <H1>Ingredients</H1> */}
-          {/* <ul>${details.recipe.ingredients.map(item => `<li>${item}</li>`).join("")}</ul> */}
+          {/* <View>
+            {details.recipe.ingredients.map((item, key) => (
+              <Text key={key}>{item}</Text>
+            ))}
+          </View> */}
         </RecipeBody>
 
         <Button onPress={this.goToSource} title="Go to Source" />
