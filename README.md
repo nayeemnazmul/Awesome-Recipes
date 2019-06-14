@@ -12,9 +12,9 @@ Created this app as a part of the complete react native and redux course fromd d
 
 ## Demonstration
 
-![Home Screen](https://github.com/nayeemnazmul/Awesome-Recipes/blob/master/screenshots/homescreen.png)
+![Home Screen](https://github.com/nayeemnazmul/Awesome-Recipes/blob/master/screenshots/rsz_homescreen.png)
 
-![Details Screen](https://github.com/nayeemnazmul/Awesome-Recipes/blob/master/screenshots/detailscreen.png)
+![Details Screen](https://github.com/nayeemnazmul/Awesome-Recipes/blob/master/screenshots/rsz_detailscreen.png)
 
 ## [Demo Video](https://youtu.be/qjWEnFlbEBA "React Native Recipe App Demo")
 
