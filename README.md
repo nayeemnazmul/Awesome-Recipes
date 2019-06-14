@@ -2,7 +2,7 @@
 
 A React Native Receipe App for viewing recipes from food2fork API
 
-Created this app as a part of the complete react native and redux course fromd devskill. 
+Created this app as a part of the complete react native and redux course from devskill. 
 
 ## Features Included
 
