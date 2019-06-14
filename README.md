@@ -32,5 +32,6 @@ Created this app as a part of the complete react native and redux course fromd d
 5. Concepts of props and state
 6. Concepts of components (Functional & Class)
 7. Concepts of JSX
-8. React Native Lifecycle
-9. How to publish app in expo ecosystem
+8. API call from app and receive response as json in state
+9. React Native Lifecycle
+10. How to publish app in expo ecosystem
