@@ -1,7 +1,8 @@
 {
   "expo": {
-    "name": "RecipeApp",
-    "slug": "RecipeApp",
+    "name": "Awesome Recipes",
+    "slug": "awesome-recipes",
+    "description": "A React Native Receipe App for viewing recipes from food2fork API.",
     "privacy": "public",
     "sdkVersion": "32.0.0",
     "platforms": [
@@ -10,7 +11,7 @@
     ],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/recipe-icon.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -24,6 +25,7 @@
     ],
     "ios": {
       "supportsTablet": true
-    }
+    },
+    "githubUrl": "https://github.com/nayeemnazmul/Awesome-Recipes"
   }
 }
